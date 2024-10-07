@@ -400,6 +400,27 @@ END;
 /
 
 -- Question 7
+-- Q7.1: Example of %TYPE
+SET SERVEROUTPUT ON;
+
+DECLARE
+    -- Declaring a variable with the same type as the 'email' column from the 'customer' table
+    customer_email customer.email%TYPE;
+    customer_id customer.customer_id%TYPE;
+BEGIN
+    -- Assigning a specific customer ID (for example, Jack's ID)
+    customer_id := 11011;
+
+    -- Retrieving the email of the customer using the %TYPE attribute variable
+    SELECT email INTO customer_email 
+    FROM customer 
+    WHERE customer.customer_id = customer_id; -- Make sure to refer to the table's customer_id
+
+    -- Output the email to the console
+    DBMS_OUTPUT.PUT_LINE('Customer Email: ' || customer_email);
+END;
+/
+
 
 
 -- Q7.2: Example of %ROWTYPE Attribute
